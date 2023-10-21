@@ -15,4 +15,7 @@ public interface ModalidadService {
 	
 	public abstract List<Modalidad> buscaPorDeporteEnSede(String sede, int idDeporte);
 	
+	public abstract List<Modalidad> listaPorNombreIgualRegistra(String nombre);
+
+	public abstract List<Modalidad> listaPorNombreIgualActualiza(String nombre, int id);
 }

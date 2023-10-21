@@ -378,6 +378,25 @@ $("#id_btn_actualiza").click(function(){
                     	message:'El nombre es de 5 a 100 caracteres',
                     	min : 5,
                     	max : 100
+                    },
+                    remote :{
+
+                    	delay   : 1000,
+
+                    	url     : 'buscaModalidadPorNombreRegistra',
+
+                    	message : 'El nombre ya existe',
+
+                    	data: {
+
+    		                nombres: function() {
+
+    		                    return $('#id_reg_nombre').val();
+
+    		                },
+
+    		        	},
+
                     }
                 }
             },
@@ -498,6 +517,19 @@ $("#id_btn_actualiza").click(function(){
                     	message:'El nombre es de 5 a 100 caracteres',
                     	min : 5,
                     	max : 100
+                    },
+                    remote :{
+                    	delay   : 1000,
+                    	url     : 'buscaModalidadPorNombreActualiza',
+                    	message : 'El nombre ya existe',
+                    	data: {
+    		                nombres: function() {
+    		                    return $('#id_act_nombre').val();
+    		                },
+    		                id: function() {
+    		                    return $('#id_ID').val();
+    		                },
+    		        	},
                     }
                 }
             },

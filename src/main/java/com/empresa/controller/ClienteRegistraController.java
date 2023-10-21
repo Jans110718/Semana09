@@ -49,7 +49,7 @@ public class ClienteRegistraController {
 		return map;
 	}
 	
-	@GetMapping("/buscaPorDni")
+	@GetMapping("/buscarDNI")
 	@ResponseBody
 	public String validaDni(String dni) {
 		List<Cliente> lstCliente = clienteService.listaPorDni(dni);

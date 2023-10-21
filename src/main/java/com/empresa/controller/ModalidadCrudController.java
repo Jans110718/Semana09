@@ -8,10 +8,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.empresa.entity.Cliente;
 import com.empresa.entity.Modalidad;
 import com.empresa.service.ModalidadService;
 
@@ -88,7 +90,34 @@ public class ModalidadCrudController {
 	public List<Modalidad> consulta(String filtro) {
 		return modalidadService.listaPorNombreLike("%"+filtro+"%");
 	}
-	
-	
+	@GetMapping("/buscaModalidadPorNombreRegistra")
+	@ResponseBody
+	public String validaDni(String nombre) {
+		List<Modalidad> lst = modalidadService.listaPorNombreIgualRegistra(nombre);
+		if(CollectionUtils.isEmpty(lst)) {
+			return "{\"valid\":true}";
+		}else {
+			return "{\"valid\":false}";
+		}
+	}
+	@GetMapping("/buscaModalidadPorNombreActualiza")
+
+	@ResponseBody
+
+	public String validaNombreActualiza(String nombre, int id) {
+
+		List<Modalidad> lst = modalidadService.listaPorNombreIgualActualiza(nombre, id);
+
+		if(CollectionUtils.isEmpty(lst)) {
+
+			return "{\"valid\":true}";
+
+		}else {
+
+			return "{\"valid\":false}";
+
+		}
+
+	}	
 	
 }
